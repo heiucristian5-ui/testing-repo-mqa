@@ -27,7 +27,7 @@ If everything below works for you, you are ready for Lesson 2.
 9. [Step 7 — Run `firstTest.spec.ts`](#step-7--run-firsttestspects)
 10. [Step 8 — Open the HTML test report](#step-8--open-the-html-test-report)
 11. [Troubleshooting](#troubleshooting)
-12. [Recommended VS Code extensions](#recommended-vs-code-extensions)
+12. [Recommended editor extensions (Cursor / VS Code)](#recommended-editor-extensions-cursor--vs-code)
 13. [What to submit / how to confirm you finished Lesson 1](#what-to-submit--how-to-confirm-you-finished-lesson-1)
 
 ---
@@ -355,14 +355,38 @@ If your symptom is not listed, post the **last 20 lines** of terminal output to 
 
 ---
 
-## Recommended VS Code extensions
+## Recommended editor extensions (Cursor / VS Code)
 
-Install these from the VS Code Extensions panel for a smoother experience:
+Cursor uses the same VS Code marketplace, so the extension IDs below work in both editors. Open the Extensions panel (`Cmd+Shift+X` on macOS, `Ctrl+Shift+X` on Windows / Linux) and search by name or paste the ID.
 
-- **Playwright Test for VSCode** (`ms-playwright.playwright`) — run/debug individual tests from the editor.
+### Required — Playwright Test extension
+
+**ID:** `ms-playwright.playwright`
+**Marketplace name:** "Playwright Test for VSCode" (works the same in Cursor)
+
+This is the single most important extension for the course. With it you can:
+
+- Run or debug a single test directly from the editor — click the green ▶ next to any `test(...)` line.
+- See pass/fail status inline, plus a "Test Results" sidebar.
+- Record selectors with the **Pick Locator** button (very useful in later lessons).
+- Replay Playwright traces inside the editor.
+
+**Install in Cursor:**
+1. Open Cursor.
+2. Press `Cmd+Shift+X` (macOS) or `Ctrl+Shift+X` (Windows / Linux) to open the Extensions panel.
+3. Search for `Playwright` or paste the ID `ms-playwright.playwright`.
+4. Click **Install**.
+5. Reload the window if Cursor prompts you.
+
+**Install in VS Code:** identical steps — same panel, same extension ID.
+
+**Verify it works:** open `tests/firstTest.spec.ts`. You should see green ▶ icons next to each `test(...)` block. Click one — the test runs without you touching the terminal.
+
+### Recommended — also worth installing
+
 - **ESLint** — surfaces code issues as you type.
-- **Prettier - Code formatter** — matches the project's formatting (already configured via `.prettierrc`).
-- **Angular Language Service** — useful when you start poking at the app under test.
+- **Prettier - Code formatter** (`esbenp.prettier-vscode`) — matches the project's formatting (already configured via `.prettierrc`).
+- **Angular Language Service** (`angular.ng-template`) — useful when you start poking at the application under test.
 
 ---
 
