@@ -24,6 +24,10 @@ import { DatepickerOverlayComponent } from '../support/components/forms/Datepick
 import { CalendarPageComponent } from '../support/components/extraComponents/CalendarPageComponent';
 import { EchartsPageComponent } from '../support/components/charts/EchartsPageComponent';
 import { IotDashboardPageComponent } from '../support/components/dashboard/IotDashboardPageComponent';
+import { LoginPageComponent } from '../support/components/auth/LoginPageComponent';
+import { RegisterPageComponent } from '../support/components/auth/RegisterPageComponent';
+import { RequestPasswordPageComponent } from '../support/components/auth/RequestPasswordPageComponent';
+import { ResetPasswordPageComponent } from '../support/components/auth/ResetPasswordPageComponent';
 
 type MyFixtures = {
   onBasicForm: BasicFormComponent;
@@ -50,6 +54,10 @@ type MyFixtures = {
   onCalendarPage: CalendarPageComponent;
   onEchartsPage: EchartsPageComponent;
   onIotDashboardPage: IotDashboardPageComponent;
+  onLoginPage: LoginPageComponent;
+  onRegisterPage: RegisterPageComponent;
+  onRequestPasswordPage: RequestPasswordPageComponent;
+  onResetPasswordPage: ResetPasswordPageComponent;
 };
 
 const createFixture = <T>(Component: new (page: Page) => T) => {
@@ -83,6 +91,10 @@ export const test = base.extend<MyFixtures>({
   onCalendarPage: [createFixture(CalendarPageComponent), { scope: 'test' }],
   onEchartsPage: [createFixture(EchartsPageComponent), { scope: 'test' }],
   onIotDashboardPage: [createFixture(IotDashboardPageComponent), { scope: 'test' }],
+  onLoginPage: [createFixture(LoginPageComponent), { scope: 'test' }],
+  onRegisterPage: [createFixture(RegisterPageComponent), { scope: 'test' }],
+  onRequestPasswordPage: [createFixture(RequestPasswordPageComponent), { scope: 'test' }],
+  onResetPasswordPage: [createFixture(ResetPasswordPageComponent), { scope: 'test' }],
 });
 
 export { expect };

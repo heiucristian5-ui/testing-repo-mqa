@@ -11,6 +11,10 @@ import { DatepickerPageComponent } from '../forms/DatepickerPageComponent';
 import { CalendarPageComponent } from '../extraComponents/CalendarPageComponent';
 import { EchartsPageComponent } from '../charts/EchartsPageComponent';
 import { IotDashboardPageComponent } from '../dashboard/IotDashboardPageComponent';
+import { LoginPageComponent } from '../auth/LoginPageComponent';
+import { RegisterPageComponent } from '../auth/RegisterPageComponent';
+import { RequestPasswordPageComponent } from '../auth/RequestPasswordPageComponent';
+import { ResetPasswordPageComponent } from '../auth/ResetPasswordPageComponent';
 
 export class ApplicationURLs {
   readonly page: Page;
@@ -101,5 +105,33 @@ export class ApplicationURLs {
 
     const dashboardPage = new IotDashboardPageComponent(this.page);
     await dashboardPage.assertVisibility(true);
+  }
+
+  async navigateToLoginPage() {
+    await this.page.goto('/auth/login', { waitUntil: 'domcontentloaded' });
+
+    const loginPage = new LoginPageComponent(this.page);
+    await loginPage.assertVisibility(true);
+  }
+
+  async navigateToRegisterPage() {
+    await this.page.goto('/auth/register', { waitUntil: 'domcontentloaded' });
+
+    const registerPage = new RegisterPageComponent(this.page);
+    await registerPage.assertVisibility(true);
+  }
+
+  async navigateToRequestPasswordPage() {
+    await this.page.goto('/auth/request-password', { waitUntil: 'domcontentloaded' });
+
+    const requestPasswordPage = new RequestPasswordPageComponent(this.page);
+    await requestPasswordPage.assertVisibility(true);
+  }
+
+  async navigateToResetPasswordPage() {
+    await this.page.goto('/auth/reset-password', { waitUntil: 'domcontentloaded' });
+
+    const resetPasswordPage = new ResetPasswordPageComponent(this.page);
+    await resetPasswordPage.assertVisibility(true);
   }
 }
