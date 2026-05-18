@@ -1,6 +1,14 @@
 import { Locator, Page } from 'playwright';
 import { expect } from 'playwright/test';
 
+export type SocialIcon = 'github' | 'facebook' | 'twitter';
+
+const SOCIAL_URLS: Record<SocialIcon, string> = {
+  github: 'https://github.com/akveo/nebular',
+  facebook: 'https://www.facebook.com/akveo/',
+  twitter: 'https://twitter.com/akveo_inc',
+};
+
 export class LoginPageComponent {
   readonly page: Page;
   readonly title: Locator;
@@ -10,6 +18,7 @@ export class LoginPageComponent {
   readonly submitButton: Locator;
   readonly forgotPasswordLink: Locator;
   readonly registerLink: Locator;
+  readonly socialsSection: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -21,7 +30,22 @@ export class LoginPageComponent {
       .locator('input[type="checkbox"]');
     this.submitButton = page.getByRole('button', { name: 'Log In' });
     this.forgotPasswordLink = page.getByRole('link', { name: 'Forgot Password?' });
-    this.registerLink = page.getByRole('link', { name: 'Register' });
+    this.registerLink = page.locator('section.another-action a.text-link');
+    this.socialsSection = page.locator('section.links .socials');
+  }
+
+  socialIcon(icon: SocialIcon): Locator {
+    return this.socialsSection.locator(`a.${icon}`);
+  }
+
+  expectedSocialUrl(icon: SocialIcon): string {
+    return SOCIAL_URLS[icon];
+  }
+
+  async clickRegisterLink() {
+    // Angular routerLink doesn't react to Playwright's synthetic click here;
+    // dispatchEvent('click') reliably triggers the directive's navigation.
+    await this.registerLink.dispatchEvent('click');
   }
 
   async assertVisibility(visible = true) {

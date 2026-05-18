@@ -1,4 +1,5 @@
-import { test } from '../../fixtures/base_fixture';
+import { test, expect } from '../../fixtures/base_fixture';
+import { SocialIcon } from '../../support/components/auth/LoginPageComponent';
 
 test.describe('Auth pages', () => {
   test('login: fill form and assert submit is enabled', async ({
@@ -20,6 +21,53 @@ test.describe('Auth pages', () => {
 
     await test.step('Assert the Log In button is enabled', async () => {
       await onLoginPage.assertSubmitEnabled();
+    });
+  });
+
+  const socials: SocialIcon[] = ['github', 'facebook', 'twitter'];
+
+  for (const icon of socials) {
+    test(`login: ${icon} social icon links to the expected URL`, async ({
+      onApplicationURLs,
+      onLoginPage,
+    }) => {
+      await test.step('Navigate to the login page', async () => {
+        await onApplicationURLs.navigateToLoginPage();
+      });
+
+      await test.step(`Assert ${icon} icon is visible and links to the expected URL`, async () => {
+        const link = onLoginPage.socialIcon(icon);
+        await expect(link).toBeVisible();
+        await expect(link).toHaveAttribute('href', onLoginPage.expectedSocialUrl(icon));
+        await expect(link).toHaveAttribute('target', '_blank');
+      });
+    });
+  }
+
+  test('login: clicking the Register link navigates to /auth/register', async ({
+    onApplicationURLs,
+    onLoginPage,
+    onRegisterPage,
+    page,
+  }) => {
+    await test.step('Navigate to the login page', async () => {
+      await onApplicationURLs.navigateToLoginPage();
+    });
+
+    await test.step('Assert the Register link points to /auth/register', async () => {
+      await expect(onLoginPage.registerLink).toHaveAttribute('href', '/auth/register');
+    });
+
+    await test.step('Click the Register link', async () => {
+      await onLoginPage.clickRegisterLink();
+    });
+
+    await test.step('Wait for navigation to /auth/register', async () => {
+      await page.waitForURL(/\/auth\/register$/);
+    });
+
+    await test.step('Assert register page rendered', async () => {
+      await onRegisterPage.assertVisibility(true);
     });
   });
 
