@@ -17,6 +17,8 @@ import { TooltipPageComponent } from '../support/components/modalOverlays/Toolti
 import { TooltipContentComponent } from '../support/components/modalOverlays/TooltipContentComponent';
 import { ToastrPageComponent } from '../support/components/modalOverlays/ToastrPageComponent';
 import { ToastComponent } from '../support/components/modalOverlays/ToastComponent';
+import { SmartTablePageComponent } from '../support/components/tables/SmartTablePageComponent';
+import { TreeGridPageComponent } from '../support/components/tables/TreeGridPageComponent';
 
 type MyFixtures = {
   onBasicForm: BasicFormComponent;
@@ -36,6 +38,8 @@ type MyFixtures = {
   onTooltipContent: TooltipContentComponent;
   onToastrPage: ToastrPageComponent;
   onToast: ToastComponent;
+  onSmartTablePage: SmartTablePageComponent;
+  onTreeGridPage: TreeGridPageComponent;
 };
 
 const createFixture = <T>(Component: new (page: Page) => T) => {
@@ -62,6 +66,8 @@ export const test = base.extend<MyFixtures>({
   onTooltipContent: [createFixture(TooltipContentComponent), { scope: 'test' }],
   onToastrPage: [createFixture(ToastrPageComponent), { scope: 'test' }],
   onToast: [createFixture(ToastComponent), { scope: 'test' }],
+  onSmartTablePage: [createFixture(SmartTablePageComponent), { scope: 'test' }],
+  onTreeGridPage: [createFixture(TreeGridPageComponent), { scope: 'test' }],
 });
 
 export { expect };

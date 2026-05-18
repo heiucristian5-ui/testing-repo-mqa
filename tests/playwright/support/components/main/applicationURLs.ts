@@ -5,6 +5,8 @@ import { DialogPageComponent } from '../modalOverlays/DialogPageComponent';
 import { PopoverPageComponent } from '../modalOverlays/PopoverPageComponent';
 import { TooltipPageComponent } from '../modalOverlays/TooltipPageComponent';
 import { ToastrPageComponent } from '../modalOverlays/ToastrPageComponent';
+import { SmartTablePageComponent } from '../tables/SmartTablePageComponent';
+import { TreeGridPageComponent } from '../tables/TreeGridPageComponent';
 
 export class ApplicationURLs {
   readonly page: Page;
@@ -53,5 +55,19 @@ export class ApplicationURLs {
 
     const toastrPage = new ToastrPageComponent(this.page);
     await toastrPage.assertVisibility(true);
+  }
+
+  async navigateToSmartTablePage() {
+    await this.page.goto('/pages/tables/smart-table', { waitUntil: 'domcontentloaded' });
+
+    const smartTablePage = new SmartTablePageComponent(this.page);
+    await smartTablePage.assertVisibility(true);
+  }
+
+  async navigateToTreeGridPage() {
+    await this.page.goto('/pages/tables/tree-grid', { waitUntil: 'domcontentloaded' });
+
+    const treeGridPage = new TreeGridPageComponent(this.page);
+    await treeGridPage.assertVisibility(true);
   }
 }
