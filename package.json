@@ -9,6 +9,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "test": "playwright test",
+    "test:visual": "playwright test --config=playwright-visual.config.ts",
     "format": "prettier --write \"src/**/*.{ts,html,scss,json}\" \"tests/**/*.ts\" \"*.ts\"",
     "format:check": "prettier --check \"src/**/*.{ts,html,scss,json}\" \"tests/**/*.ts\" \"*.ts\""
   },
