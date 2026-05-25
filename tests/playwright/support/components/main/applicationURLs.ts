@@ -121,17 +121,16 @@ export class ApplicationURLs {
     await registerPage.assertVisibility(true);
   }
 
-  async navigateToRequestPasswordPage() {
-    await this.page.goto('/auth/request-password', { waitUntil: 'domcontentloaded' });
-
-    const requestPasswordPage = new RequestPasswordPageComponent(this.page);
-    await requestPasswordPage.assertVisibility(true);
-  }
-
   async navigateToResetPasswordPage() {
     await this.page.goto('/auth/reset-password', { waitUntil: 'domcontentloaded' });
 
     const resetPasswordPage = new ResetPasswordPageComponent(this.page);
     await resetPasswordPage.assertVisibility(true);
+  }
+
+  async navigateToModalOverlaysPage() {
+    await this.page.goto('/pages/modal-overlays/dialog', {
+      waitUntil: 'domcontentloaded',
+    });
   }
 }
