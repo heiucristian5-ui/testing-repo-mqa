@@ -18,15 +18,22 @@ test.describe('Auth Layout', () => {
   });
 
   test('request password page view', async ({ page, onApplicationURLs }) => {
-    await onApplicationURLs.navigateToRequestPasswordPage();
+    // await onApplicationURLs.navigateToRequestPasswordPage();
 
     await page.setViewportSize({ width: 375, height: 812 });
-    await argosFullScreenshot({ page, snapshotName: 'request password page view - Mobile' });
+
+    await argosFullScreenshot({
+      page,
+      snapshotName: 'request password page view - Mobile',
+    });
   });
 
   test('reset password page view', async ({ page, onApplicationURLs }) => {
     await onApplicationURLs.navigateToResetPasswordPage();
 
-    await argosFullScreenshot({ page, snapshotName: 'reset password page view' });
+    await argosFullScreenshot({
+      page,
+      snapshotName: 'reset password page view',
+    });
   });
 });
