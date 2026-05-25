@@ -1,6 +1,7 @@
 import { test } from '../../fixtures/base_fixture';
 
 test.describe('Form Layouts page', () => {
+
   test('user should be able to complete the basic form and submit it', async ({
     onApplicationURLs,
     onBasicForm,
@@ -80,6 +81,7 @@ test.describe('Form Layouts page', () => {
     onApplicationURLs,
     onNoLabelsForm,
   }) => {
+
     await test.step('Navigate to the form layouts page', async () => {
       await onApplicationURLs.navigateToFormsLayouts();
     });
@@ -100,6 +102,7 @@ test.describe('Form Layouts page', () => {
     onApplicationURLs,
     onBlockForm,
   }) => {
+
     await test.step('Navigate to the form layouts page', async () => {
       await onApplicationURLs.navigateToFormsLayouts();
     });
@@ -142,4 +145,16 @@ test.describe('Form Layouts page', () => {
       await onHorizontalForm.submit();
     });
   });
+
+  test('user should be able to toggle checkbox', async ({
+    onApplicationURLs,
+    onBasicForm,
+  }) => {
+
+    await onApplicationURLs.navigateToFormsLayouts();
+
+    await onBasicForm.toggleCheckMeOut();
+
+  });
+
 });
