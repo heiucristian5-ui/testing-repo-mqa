@@ -12,6 +12,12 @@ import { expect, test as base } from 'playwright/test';
 import { ApplicationURLs } from '../support/components/main/applicationURLs';
 import { HeaderComponent } from '../support/components/main/HeaderComponent';
 
+import { TooltipPageComponent } from '../support/components/modalOverlays/TooltipPageComponent';
+import { TooltipContentComponent } from '../support/components/modalOverlays/TooltipContentComponent';
+
+import { ToastrPageComponent } from '../support/components/modalOverlays/ToastrPageComponent';
+import { ToastComponent } from '../support/components/modalOverlays/ToastComponent';
+
 type MyFixtures = {
   onBasicForm: BasicFormComponent;
   onGridForm: UsingGridComponent;
@@ -21,6 +27,12 @@ type MyFixtures = {
   onHorizontalForm: HorizontalFormComponent;
 
   onModalOverlaysPage: ModalOverlaysPageComponent;
+
+  onTooltipPage: TooltipPageComponent;
+  onTooltipContent: TooltipContentComponent;
+
+  onToastrPage: ToastrPageComponent;
+  onToast: ToastComponent;
 
   onApplicationURLs: ApplicationURLs;
   onHeader: HeaderComponent;
@@ -56,7 +68,30 @@ export const test = base.extend<MyFixtures>({
     { scope: 'test' },
   ],
 
-  onApplicationURLs: [createFixture(ApplicationURLs), { scope: 'test' }],
+  onTooltipPage: [
+    createFixture(TooltipPageComponent),
+    { scope: 'test' },
+  ],
+
+  onTooltipContent: [
+    createFixture(TooltipContentComponent),
+    { scope: 'test' },
+  ],
+
+  onToastrPage: [
+    createFixture(ToastrPageComponent),
+    { scope: 'test' },
+  ],
+
+  onToast: [
+    createFixture(ToastComponent),
+    { scope: 'test' },
+  ],
+
+  onApplicationURLs: [
+    createFixture(ApplicationURLs),
+    { scope: 'test' },
+  ],
 
   onHeader: [createFixture(HeaderComponent), { scope: 'test' }],
 });
